@@ -1,6 +1,6 @@
 class Robot extends Enemy{
 	// Requirement #5: Complete Dinosaur Class
-
+  Laser laser;
 	final int PLAYER_DETECT_RANGE_ROW = 2;
 	final int LASER_COOLDOWN = 180;
 	final int HAND_OFFSET_Y = 37;
@@ -8,6 +8,7 @@ class Robot extends Enemy{
 	final int HAND_OFFSET_X_BACKWARD = 16;
   Robot(float x, float y){
     super(x,y);
+    laser=new Laser();
   }
   final float TRIGGERED_SPEED_MULTIPLIER = 5;
     float speed = 2f;
@@ -24,6 +25,9 @@ class Robot extends Enemy{
       image(robot, -w, 0, w, h); 
     }
     popMatrix();
+    laser.update();
+    laser.display();
+    laser.fire(this.x,this.y,this.x+80,this.y+80);
   }
 
   void update(){
