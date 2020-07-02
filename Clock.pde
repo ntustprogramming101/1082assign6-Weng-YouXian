@@ -5,15 +5,16 @@ class Clock extends Item{
     
   }
   void display(){
-    image(clock,x,y);
+    if(isAlive){
+      image(clock,x,y);
+    }
   }
   void checkCollision(Player player){
   if(this.x<player.x+SOIL_SIZE&&
   this.x+SOIL_SIZE>player.x&&
   this.y<player.y+SOIL_SIZE&&
-  this.y+SOIL_SIZE>player.y){
+  this.y+SOIL_SIZE>player.y&&isAlive==true){
     isAlive = false;
-    x=1000;
     gameTimer+=15*60;
   }
 }
