@@ -5,17 +5,17 @@ class Cabbage extends Item {
     
   }
   void display(){
-    image(cabbage,x,y);
+    if(isAlive){
+      image(cabbage,x,y);
+    }
   }
   void checkCollision(Player player){
   if(this.x<player.x+SOIL_SIZE&&
   this.x+SOIL_SIZE>player.x&&
   this.y<player.y+SOIL_SIZE&&
-  this.y+SOIL_SIZE>player.y){
+  this.y+SOIL_SIZE>player.y&&player.health<5&&isAlive==true){
     isAlive = false;
-    if(player.health<5){
-      x=1000;
-      player.health+=1;}
+    player.health+=1;
   }
 }
 	/*
